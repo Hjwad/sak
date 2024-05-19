@@ -35,7 +35,7 @@ from Auput.utils.stream.stream import stream
 
 
 @app.on_message(
-    filters.command(PLAY_COMMAND)
+    command(PLAY_COMMAND)
     & filters.group
     & ~BANNED_USERS
 )
