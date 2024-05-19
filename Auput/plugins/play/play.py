@@ -33,6 +33,7 @@ from Auput.utils.stream.stream import stream
 # Command
 # Command
 
+PLAY_COMMAND = get_command("PLAY_COMMAND")
 
 @app.on_message(
     command(PLAY_COMMAND)
