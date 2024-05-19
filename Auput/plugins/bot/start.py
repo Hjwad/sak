@@ -22,7 +22,6 @@ from Auput.utils.database import (add_served_chat,
                                        is_served_private_chat)
 from Auput.utils.decorators.language import LanguageStart
 from Auput.utils.inline import (
-    alive_panel,
     help_pannel,
     private_panel,
     start_pannel,
