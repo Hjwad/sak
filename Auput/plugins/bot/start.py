@@ -21,7 +21,7 @@ from Auput.utils.database import (add_served_chat,
                                        get_userss, is_on_off,
                                        is_served_private_chat)
 from Auput.utils.decorators.language import LanguageStart
-from YukkiMusic.utils.inline import (
+from Auput.utils.inline import (
     alive_panel,
     help_pannel,
     private_panel,
