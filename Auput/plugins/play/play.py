@@ -31,14 +31,15 @@ from Auput.utils.logger import play_logs
 from Auput.utils.stream.stream import stream
 
 # Command
-PLAY_COMMAND = get_command("PLAY_COMMAND")
+# Command
 
 
 @app.on_message(
-    command(PLAY_COMMAND)
+    filters.command(PLAY_COMMAND)
     & filters.group
     & ~BANNED_USERS
 )
+
 @PlayWrapper
 async def play_commnd(
     client,
@@ -51,20 +52,7 @@ async def play_commnd(
     url,
     fplay,
 ):
-    if not await is_served_user(message.from_user.id):
-        await message.reply_text(
-            text="Error, You're Not A Verified User ❌\nPlease Click On The Below Button To Verify Yourself .",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            text="Click For Play Or Verify Here",
-                            url=f"https://t.me/{app.username}?start=verify",
-                        )
-                    ]
-                ]
-            ),
-        )
+    if not await check_is_joined(message):
         return
     mystic = await message.reply_text(
         _["play_2"].format(channel) if channel else _["play_1"]
@@ -114,7 +102,6 @@ async def play_commnd(
                 "path": file_path,
                 "dur": dur,
             }
-
             try:
                 await stream(
                     _,
